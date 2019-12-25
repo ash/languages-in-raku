@@ -1,0 +1,7 @@
+"Hello, World!" print
+20 22 add print
+
+42 "x" var
+x print
+
+10 x subtract print
