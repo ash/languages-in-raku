@@ -6,16 +6,16 @@ my %function =
         say @stack.pop
     },
 
-    add => sub {
+    '+' => sub {
         @stack.push(@stack.pop + @stack.pop)
     },
-    subtract => sub {
+    '-' => sub {
         @stack.push(@stack.pop - @stack.pop)
     },
-    multiply => sub {
+    '*' => sub {
         @stack.push(@stack.pop * @stack.pop)
     },
-    divide => sub {        
+    '/' => sub {        
         @stack.push(@stack.pop / @stack.pop)
     },
 
@@ -52,7 +52,11 @@ grammar StackyLang {
     }
 
     token word {
-        \w+ {
+        [
+            | \w+ 
+            | '+' | '-' | '*' | '/'
+        ]
+        {
             if %variable{~$/} {
                 @stack.push(%variable{~$/});
             }
